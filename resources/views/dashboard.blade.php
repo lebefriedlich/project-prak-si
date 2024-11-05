@@ -22,7 +22,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-sm-6">
                     <div class="card">
-                        {{-- <a href="{{ route('usaha.index') }}"> --}}
+                        <a href="{{ route('sub_kriteria.ipk.index') }}">
                             <div class="stat-widget-one card-body">
                                 <div class="stat-icon d-inline-block">
                                     <i class="bi bi-journal-text text-dark border-dark"></i>
@@ -32,12 +32,12 @@
                                     <div class="stat-digit">{{ $counts['IPK'] }}</div>
                                 </div>
                             </div>
-                        {{-- </a> --}}
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="card">
-                        {{-- <a href="{{ route('umkm.index') }}"> --}}
+                        <a href="{{ route('sub_kriteria.tes_pemrograman.index') }}">
                             <div class="stat-widget-one card-body">
                                 <div class="stat-icon d-inline-block">
                                     <i class="bi bi-code-slash text-primary border-primary"></i>
@@ -47,12 +47,12 @@
                                     <div class="stat-digit">{{ $counts['Tes Pemrograman'] }}</div>
                                 </div>
                             </div>
-                        {{-- </a> --}}
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="card">
-                        {{-- <a href="{{ route('kriteria.index') }}"> --}}
+                        <a href="{{ route('sub_kriteria.kemampuan_mengajar.index') }}">
                             <div class="stat-widget-one card-body">
                                 <div class="stat-icon d-inline-block">
                                     <i class="bi bi-award text-secondary border-secondary"></i>
@@ -62,12 +62,12 @@
                                     <div class="stat-digit">{{ $counts['Kemampuan Mengajar'] }}</div>
                                 </div>
                             </div>
-                        {{-- </a> --}}
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="card">
-                        {{-- <a href="{{ route('bobot.index') }}"> --}}
+                        <a href="{{ route('sub_kriteria.nilai_referensi.index') }}">
                             <div class="stat-widget-one card-body">
                                 <div class="stat-icon d-inline-block">
                                     <i class="bi bi-bar-chart text-danger border-danger"></i>
@@ -77,12 +77,12 @@
                                     <div class="stat-digit">{{ $counts['Nilai Referensi'] }}</div>
                                 </div>
                             </div>
-                        {{-- </a> --}}
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="card">
-                        {{-- <a href="{{ route('bobot.index') }}"> --}}
+                        <a href="{{ route('sub_kriteria.kerja_sama.index') }}">
                             <div class="stat-widget-one card-body">
                                 <div class="stat-icon d-inline-block">
                                     <i class="bi bi-people text-info border-info"></i>
@@ -92,7 +92,7 @@
                                     <div class="stat-digit">{{ $counts['Kerja Sama'] }}</div>
                                 </div>
                             </div>
-                        {{-- </a> --}}
+                        </a>
                     </div>
                 </div>
             </div>

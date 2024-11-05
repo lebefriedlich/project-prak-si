@@ -5,6 +5,7 @@ use App\Http\Controllers\IPKController;
 use App\Http\Controllers\KemampuanMengajarController;
 use App\Http\Controllers\KerjaSamaController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\NilaiReferensiController;
 use App\Http\Controllers\TesPemrogramanController;
 use Illuminate\Support\Facades\Route;
