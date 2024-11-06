@@ -41,3 +41,6 @@ Route::get('/sub-kriteria/kerja-sama', [KerjaSamaController::class, 'index'])->n
 Route::post('/sub-kriteria/kerja-sama', [KerjaSamaController::class, 'store'])->name('sub_kriteria.kerja_sama.store');
 Route::post('/sub-kriteria/kerja-sama/{id}', [KerjaSamaController::class, 'update'])->name('sub_kriteria.kerja_sama.update');
 Route::delete('/sub-kriteria/kerja-sama/{id}', [KerjaSamaController::class, 'destroy'])->name('sub_kriteria.kerja_sama.destroy');
+
+Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
+Route::post('/get-data', [LandingPageController::class, 'getData'])->name('get-data');
