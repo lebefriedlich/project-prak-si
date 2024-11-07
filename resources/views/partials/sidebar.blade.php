@@ -21,6 +21,12 @@
                                 class="bi bi-people"></i><span class="nav-text">Kerja Sama</span></a></li>
                 </ul>
             </li>
+            <li>
+                <a href="#" data-toggle="modal" data-target="#logoutModal" aria-expanded="false">
+                    <i class="bi bi-box-arrow-left"></i>
+                    <span class="nav-text">Keluar</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

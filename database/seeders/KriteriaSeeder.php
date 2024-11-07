@@ -20,22 +20,22 @@ class KriteriaSeeder extends Seeder
                 'bobot' => 3
             ],
             [
-                'nama' => 'Tes pemrograman',
+                'nama' => 'Tes Pemrograman',
                 'tipe' => 'benefit',
                 'bobot' => 2
             ],
             [
-                'nama' => 'Kemampuan mengajar',
+                'nama' => 'Kemampuan Mengajar',
                 'tipe' => 'benefit',
                 'bobot' => 2
             ],
             [
-                'nama' => 'Nilai referensi',
+                'nama' => 'Nilai Referensi',
                 'tipe' => 'benefit',
                 'bobot' => 2
             ],
             [
-                'nama' => 'Kerja sama',
+                'nama' => 'Kerja Sama',
                 'tipe' => 'benefit',
                 'bobot' => 3
             ],

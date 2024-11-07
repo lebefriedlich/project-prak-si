@@ -50,9 +50,14 @@
                                     <i class="mdi mdi-account"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="{{ asset('page-login.html') }}" class="dropdown-item">
+                                    {{-- <a href="{{ route('logout_admin') }}" class="dropdown-item">
                                         <i class="bi bi-box-arrow-left"></i>
                                         <span class="ml-2">Logout </span>
+                                    </a> --}}
+                                    <a href="#" data-toggle="modal" data-target="#logoutModal"
+                                        aria-expanded="false" class="dropdown-item">
+                                        <i class="bi bi-box-arrow-left"></i>
+                                        <span class="ml-2">Keluar</span>
                                     </a>
                                 </div>
                             </li>
@@ -65,5 +70,33 @@
         @include('partials.sidebar')
 
         @yield('content')
+
+        <!-- Logout Confirmation Modal -->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="logoutModalLabel">Konfirmasi Logout</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Apakah kamu yakin ingin keluar?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <form id="logout-form" action="{{ route('logout_admin') }}" method="POST"
+                            style="display: none;">
+                            @csrf
+                        </form>
+                        <button type="button" class="btn btn-danger"
+                            onclick="document.getElementById('logout-form').submit();">Ya, Keluar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         @include('partials.footer')
