@@ -354,24 +354,24 @@
                             </div>
                             <div class="form-group mt-3">
                                 <label for="c10">IPK</label>
-                                <input type="number" step="0.1" class="form-control" id="c10"
+                                <input type="number" step="0.01" class="form-control" id="c10"
                                     name="c1[]" />
                             </div>
                             <div class="form-group mt-3">
                                 <label for="c20">Nilai Tes Pemrograman</label>
-                                <input type="number" class="form-control" id="c20" name="c2[]" />
+                                <input type="number" step="0.01" class="form-control" id="c20" name="c2[]" />
                             </div>
                             <div class="form-group mt-3">
                                 <label for="c30">Nilai Kemampuan Mengajar</label>
-                                <input type="number" class="form-control" id="c30" name="c3[]" />
+                                <input type="number" step="0.01" class="form-control" id="c30" name="c3[]" />
                             </div>
                             <div class="form-group mt-3">
                                 <label for="c40">Nilai Referensi</label>
-                                <input type="number" class="form-control" id="c40" name="c4[]" />
+                                <input type="number" step="0.01" class="form-control" id="c40" name="c4[]" />
                             </div>
                             <div class="form-group mt-3">
                                 <label for="c50">Nilai Kerja Sama</label>
-                                <input type="number" class="form-control" id="c50" name="c5[]" />
+                                <input type="number" step="0.01" class="form-control" id="c50" name="c5[]" />
                             </div>
                             <hr />
                         </div>
@@ -620,7 +620,7 @@
                   <label for="c1${setCount}">IPK</label>
                   <input
                     type="number"
-                    step="0.1"
+                    step="0.01"
                     class="form-control"
                     id="c1${setCount}"
                     name="c1[]"
@@ -630,6 +630,7 @@
                   <label for="c2${setCount}">Nilai Tes Pemrograman</label>
                   <input
                     type="number"
+                    step="0.01" 
                     class="form-control"
                     id="c2${setCount}"
                     name="c2[]"
@@ -639,6 +640,7 @@
                   <label for="c3${setCount}">Nilai Kemampuan Mengajar</label>
                   <input
                     type="number"
+                    step="0.01" 
                     class="form-control"
                     id="c3${setCount}"
                     name="c3[]"
@@ -648,6 +650,7 @@
                   <label for="c4${setCount}">Nilai Referensi</label>
                   <input
                     type="number"
+                    step="0.01" 
                     class="form-control"
                     id="c4${setCount}"
                     name="c4[]"
@@ -657,6 +660,7 @@
                   <label for="c5${setCount}">Nilai Kerja Sama</label>
                   <input
                     type="number"
+                    step="0.01" 
                     class="form-control"
                     id="c5${setCount}"
                     name="c5[]"
