@@ -7,8 +7,8 @@
             <div class="row page-titles mx-0">
                 <div class="col-sm-6 p-md-0">
                     <div class="welcome-text">
-                        <h4>Hi, welcome back!</h4>
-                        <p class="mb-0">In your dashboard</p>
+                        <h4>Hai Selamat Datang!</h4>
+                        <p class="mb-0">Di Dashboard Anda</p>
                     </div>
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -96,7 +96,28 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Informasi Proyek</h5>
+                            <p class="card-text text-dark text-justify">Sistem Pendukung Keputusan Pemilihan Asisten Dosen adalah
+                                aplikasi inovatif yang dirancang untuk membantu pengguna dalam
+                                menentukan asisten dosen yang paling sesuai berdasarkan
+                                kriteria yang telah ditentukan. Dengan menggunakan metode
+                                <strong>Simple Additive Weighting (SAW)</strong>, aplikasi ini memfasilitasi
+                                proses pengambilan keputusan yang lebih objektif dan terukur.
+                                Manfaat utama dari aplikasi ini termasuk penghematan waktu
+                                dalam evaluasi, peningkatan akurasi dalam pemilihan, serta
+                                transparansi dalam proses pengambilan keputusan. Data-datanya
+                                berdasarkan pada jurnal penelitian yang relevan.
+                            </p>
+                            <a href="https://doi.org/10.35957/jatisi.v7i1.221" target="_blank" class="btn btn-primary">Baca Jurnal</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
-

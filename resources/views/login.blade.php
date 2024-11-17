@@ -13,6 +13,17 @@
 </head>
 
 <body class="h-100">
+    @if (session('error'))
+        <div class="position-fixed" style="top: 100px; right: 100px; z-index: 1050;">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{ session('error') }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    @endif
+
     <div class="authincation h-100">
         <div class="container-fluid h-100">
             <div class="row justify-content-center h-100 align-items-center">
@@ -26,11 +37,22 @@
                                         @csrf
                                         <div class="form-group">
                                             <label><strong>Username</strong></label>
-                                            <input type="text" class="form-control" name="username">
+                                            <input type="text"
+                                                class="form-control @error('username') is-invalid @enderror"
+                                                name="username" value="{{ old('username') }}">
+                                            @error('username')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
+
                                         <div class="form-group">
                                             <label><strong>Password</strong></label>
-                                            <input type="password" class="form-control" name="password">
+                                            <input type="password"
+                                                class="form-control @error('password') is-invalid @enderror"
+                                                name="password">
+                                            @error('password')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-primary btn-block">Login</button>

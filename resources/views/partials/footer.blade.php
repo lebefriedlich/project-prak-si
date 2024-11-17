@@ -1,6 +1,6 @@
 <div class="footer">
     <div class="copyright">
-        <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a> 2024</p>
+        <p>Copyright © Designed &amp; Developed by <a href="https://www.linkedin.com/in/maulana-haekal/" target="_blank">Maulana Haekal Noval Akbar</a> 2024</p>
     </div>
 </div>
 </div>

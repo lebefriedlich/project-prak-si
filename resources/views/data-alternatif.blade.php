@@ -1,5 +1,5 @@
 @extends('partials.master')
-@section('title', 'Kriteria')
+@section('title', 'Data Alternatif')
 @section('css')
     <style>
         th,
@@ -39,7 +39,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        </div> 
+        </div>
     @endif
 
     @if (session('success'))
@@ -59,13 +59,13 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Data Kriteria</h4>
+                            <h4 class="card-title">Data Alternatif</h4>
                         </div>
                         <div class="card-body">
                             <div class="d-flex justify-content-end mb-3">
                                 <button class="btn btn-primary" data-toggle="modal" data-target="#TambahModal"><i
                                         class="bi bi-plus-circle"></i>
-                                    Tambah Data Kriteria</button>
+                                    Tambah Data Alternatif</button>
                             </div>
                             <div class="table-responsive">
                                 <table id="example" class="table table-striped-columns table-hover"
@@ -73,9 +73,12 @@
                                     <thead class="thead-light">
                                         <tr>
                                             <th class="text-center">No. </th>
-                                            <th class="text-center">Nama Kriteria</th>
-                                            <th class="text-center">Tipe Kriteria</th>
-                                            <th class="text-center">Nilai Bobot</th>
+                                            <th class="text-center">Nama</th>
+                                            <th class="text-center">IPK</th>
+                                            <th class="text-center">Tes Pemrograman</th>
+                                            <th class="text-center">Kemampuan Mengajar</th>
+                                            <th class="text-center">Nilai Referensi</th>
+                                            <th class="text-center">Kerja Sama</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
@@ -84,8 +87,11 @@
                                             <tr>
                                                 <td class="text-center text-dark">{{ $loop->iteration }}</td>
                                                 <td class="text-center text-dark">{{ $data->nama }}</td>
-                                                <td class="text-center text-dark">{{ $data->tipe }}</td>
-                                                <td class="text-center text-dark">{{ $data->bobot }}</td>
+                                                <td class="text-center text-dark">{{ $data->IPK }}</td>
+                                                <td class="text-center text-dark">{{ $data->tes_pemrograman }}</td>
+                                                <td class="text-center text-dark">{{ $data->kemampuan_mengajar }}</td>
+                                                <td class="text-center text-dark">{{ $data->nilai_referensi }}</td>
+                                                <td class="text-center text-dark">{{ $data->kerja_sama }}</td>
                                                 <td class="text-center">
                                                     <button class="btn btn-success" data-toggle="modal"
                                                         style="margin-right: 20px"
@@ -116,7 +122,8 @@
                                                             <div class="modal-footer">
                                                                 <button class="btn btn-warning" type="button"
                                                                     data-dismiss="modal">Tidak</button>
-                                                                <form action="{{ route('kriteria.destroy', $data->id) }}"
+                                                                <form
+                                                                    action="{{ route('data-alternatif.destroy', $data->id) }}"
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -129,40 +136,76 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal fade" id="EditModal{{ $data->id }}" tabindex="-1"
-                                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    role="dialog" aria-labelledby="exampleModalLabel"
+                                                    aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">Edit Data
                                                                     Bobot
                                                                 </h5>
-                                                                <button class="close" type="button" data-dismiss="modal"
-                                                                    aria-label="Close">
+                                                                <button class="close" type="button"
+                                                                    data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">×</span>
                                                                 </button>
                                                             </div>
-                                                            <form action="{{ route('kriteria.update', $data->id) }}"
+                                                            <form
+                                                                action="{{ route('data-alternatif.update', $data->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 <div class="modal-body">
                                                                     <div class="form-group">
-                                                                        <label for="nama" class="text-dark">Nama Kriteria</label>
-                                                                        <input type="text" class="form-control border border-primary" id="nama"
-                                                                            name="nama" value="{{ $data->nama }}" required>
+                                                                        <label for="nama"
+                                                                            class="text-dark">Nama</label>
+                                                                        <input type="text"
+                                                                            class="form-control border border-primary"
+                                                                            id="nama" name="nama" required
+                                                                            value="{{ $data->nama }}">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="tipe" class="text-dark">Tipe Kriteria</label>
-                                                                        <select class="form-control border border-primary form-select form-select-lg mb-3"
-                                                                            id="tipe" name="tipe" required>
-                                                                            <option value="">-</option>
-                                                                            <option value="benefit" {{ $data->tipe == 'benefit' ? 'selected' : '' }}>Benefit</option>
-                                                                            <option value="cost" {{ $data->tipe == 'cost' ? 'selected' : '' }}>Cost</option>
-                                                                        </select>
+                                                                        <label for="ipk"
+                                                                            class="text-dark">IPK</label>
+                                                                        <input type="number" step="0.01"
+                                                                            class="form-control" id="ipk"
+                                                                            name="IPK" min="0" max="4"
+                                                                            required value="{{ $data->IPK }}" />
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="bobot" class="text-dark">Nilai Bobot Kriteria</label>
-                                                                        <input type="number" class="form-control border border-primary" id="bobot"
-                                                                            name="bobot" min="1" max="10" value="{{ $data->bobot }}" required>
+                                                                        <label for="tes_pemrograman"
+                                                                            class="text-dark">Nilai Tes Pemrograman</label>
+                                                                        <input type="number" step="0.01"
+                                                                            class="form-control" id="tes_pemrograman"
+                                                                            name="tes_pemrograman" min="0"
+                                                                            max="100" required
+                                                                            value="{{ $data->tes_pemrograman }}" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="kemampuan_mengajar"
+                                                                            class="text-dark">Nilai Kemampuan
+                                                                            Mengajar</label>
+                                                                        <input type="number" step="0.01"
+                                                                            class="form-control" id="kemampuan_mengajar"
+                                                                            name="kemampuan_mengajar" min="0"
+                                                                            max="100" required
+                                                                            value="{{ $data->kemampuan_mengajar }}" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="nilai_referensi"
+                                                                            class="text-dark">Nilai Referensi</label>
+                                                                        <input type="number" step="0.01"
+                                                                            class="form-control" id="nilai_referensi"
+                                                                            name="nilai_referensi" min="0"
+                                                                            max="100" required
+                                                                            value="{{ $data->nilai_referensi }}" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="kerja_sama" class="text-dark">Nilai
+                                                                            Kerja Sama</label>
+                                                                        <input type="number" step="0.01"
+                                                                            class="form-control" id="kerja_sama"
+                                                                            name="kerja_sama" min="0"
+                                                                            max="100" required
+                                                                            value="{{ $data->kerja_sama }}" />
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button class="btn btn-danger" type="button"
@@ -197,27 +240,38 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <form action="{{ route('kriteria.store') }}" method="POST">
+                <form action="{{ route('data-alternatif.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="nama" class="text-dark">Nama Kriteria</label>
+                            <label for="nama" class="text-dark">Nama</label>
                             <input type="text" class="form-control border border-primary" id="nama"
                                 name="nama" required>
                         </div>
                         <div class="form-group">
-                            <label for="tipe" class="text-dark">Tipe Kriteria</label>
-                            <select class="form-control border border-primary form-select form-select-lg mb-3"
-                                id="tipe" name="tipe" required>
-                                <option value="">-</option>
-                                <option value="benefit">Benefit</option>
-                                <option value="cost">Cost</option>
-                            </select>
+                            <label for="ipk" class="text-dark">IPK</label>
+                            <input type="number" step="0.01" class="form-control" id="ipk" name="IPK"
+                                min="0" max="4" required />
                         </div>
                         <div class="form-group">
-                            <label for="bobot" class="text-dark">Nilai Bobot Kriteria</label>
-                            <input type="number" class="form-control border border-primary" id="bobot"
-                                name="bobot" min="1" max="10" required>
+                            <label for="tes_pemrograman" class="text-dark">Nilai Tes Pemrograman</label>
+                            <input type="number" step="0.01" class="form-control" id="tes_pemrograman"
+                                name="tes_pemrograman" min="0" max="100" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="kemampuan_mengajar" class="text-dark">Nilai Kemampuan Mengajar</label>
+                            <input type="number" step="0.01" class="form-control" id="kemampuan_mengajar"
+                                name="kemampuan_mengajar" min="0" max="100" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="nilai_referensi" class="text-dark">Nilai Referensi</label>
+                            <input type="number" step="0.01" class="form-control" id="nilai_referensi"
+                                name="nilai_referensi" min="0" max="100" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="kerja_sama" class="text-dark">Nilai Kerja Sama</label>
+                            <input type="number" step="0.01" class="form-control" id="kerja_sama" name="kerja_sama"
+                                min="0" max="100" required />
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>

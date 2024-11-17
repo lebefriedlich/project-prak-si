@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataAlternatifController;
 use App\Http\Controllers\IPKController;
 use App\Http\Controllers\KemampuanMengajarController;
 use App\Http\Controllers\KerjaSamaController;
@@ -48,6 +49,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/sub-kriteria/kerja-sama', [KerjaSamaController::class, 'store'])->name('sub_kriteria.kerja_sama.store');
     Route::post('/sub-kriteria/kerja-sama/{id}', [KerjaSamaController::class, 'update'])->name('sub_kriteria.kerja_sama.update');
     Route::delete('/sub-kriteria/kerja-sama/{id}', [KerjaSamaController::class, 'destroy'])->name('sub_kriteria.kerja_sama.destroy');
+
+    Route::get('data-alternatif', [DataAlternatifController::class, 'index'])->name('data-alternatif');
+    Route::post('data-alternatif', [DataAlternatifController::class, 'store'])->name('data-alternatif.store');
+    Route::post('data-alternatif/{id}', [DataAlternatifController::class, 'update'])->name('data-alternatif.update');
+    Route::delete('data-alternatif/{id}', [DataAlternatifController::class, 'destroy'])->name('data-alternatif.destroy');
+
+    Route::get('matris-keputusan', [DashboardController::class, 'ShowMatriksKeputusan'])->name('matriks-keputusan');
+    Route::get('normalisasi', [DashboardController::class, 'ShowNormalisasi'])->name('normalisasi');
+    Route::get('normalisasiBobot-Ranking', [DashboardController::class, 'ShowHasilBobotnRanking'])->name('normalisasiBobot-Ranking');
 
     Route::post('admin/logout', [LoginController::class, 'logout'])->name('logout_admin');
 });

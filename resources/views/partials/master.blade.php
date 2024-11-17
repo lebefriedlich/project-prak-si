@@ -50,10 +50,6 @@
                                     <i class="mdi mdi-account"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    {{-- <a href="{{ route('logout_admin') }}" class="dropdown-item">
-                                        <i class="bi bi-box-arrow-left"></i>
-                                        <span class="ml-2">Logout </span>
-                                    </a> --}}
                                     <a href="#" data-toggle="modal" data-target="#logoutModal"
                                         aria-expanded="false" class="dropdown-item">
                                         <i class="bi bi-box-arrow-left"></i>

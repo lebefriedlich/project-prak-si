@@ -21,6 +21,19 @@
                                 class="bi bi-people"></i><span class="nav-text">Kerja Sama</span></a></li>
                 </ul>
             </li>
+            <li><a href="{{ route('data-alternatif') }}" aria-expanded="false"><i class="bi bi-list-task"></i><span
+                        class="nav-text">Data Alternatif</span></a></li>
+            <li>
+            <li><a href="{{ route('matriks-keputusan') }}" aria-expanded="false"><i class="bi bi-table"></i><span
+                        class="nav-text">Matriks Keputusan</span></a></li>
+            <li>
+            <li><a href="{{ route('normalisasi') }}" aria-expanded="false"><i class="bi bi-gear"></i><span
+                        class="nav-text">Hasil Normalisasi</span></a></li>
+            <li><a href="{{ route('normalisasiBobot-Ranking') }}" aria-expanded="false"><i
+                        class="bi bi-sort-numeric-down"></i>
+                    <span class="nav-text">Normalisasi Bobot & Ranking</span>
+                </a></li>
+            <li class="menu-separator"></li>
             <li>
                 <a href="#" data-toggle="modal" data-target="#logoutModal" aria-expanded="false">
                     <i class="bi bi-box-arrow-left"></i>
@@ -30,3 +43,12 @@
         </ul>
     </div>
 </div>
+
+<style>
+    .menu-separator {
+        border-top: 1px solid #eaeaea;
+        /* Warna dan tebal garis */
+        margin: 10px 0;
+        /* Jarak antar item */
+    }
+</style>

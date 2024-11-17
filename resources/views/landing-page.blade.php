@@ -570,7 +570,7 @@
             </p>
             <div class="credits">
                 Designed by
-                <a href="https://www.linkedin.com/in/maulana-haekal/">Maulana Haekal Noval Akbar</a>
+                <a href="https://www.linkedin.com/in/maulana-haekal/" target="_blank">Maulana Haekal Noval Akbar</a>
             </div>
         </div>
     </footer>
