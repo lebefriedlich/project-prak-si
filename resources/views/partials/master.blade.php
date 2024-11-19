@@ -78,7 +78,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body text-dark">
                         Apakah kamu yakin ingin keluar?
                     </div>
                     <div class="modal-footer">
