@@ -39,21 +39,17 @@
                                             <tr>
                                                 <td class="text-center text-dark">{{ $loop->iteration }}</td>
                                                 <td class="text-center text-dark">{{ $nama }}</td>
-                                                <td class="text-center text-dark">{{ $nilai['c1'] }}</td>
-                                                <td class="text-center text-dark">{{ $nilai['c2'] }}</td>
-                                                <td class="text-center text-dark">{{ $nilai['c3'] }}</td>
-                                                <td class="text-center text-dark">{{ $nilai['c4'] }}</td>
-                                                <td class="text-center text-dark">{{ $nilai['c5'] }}</td>
+                                                @foreach ($nilai as $key => $value)
+                                                    <td class="text-center text-dark">{{ $value }}</td>
+                                                @endforeach
                                             </tr>
                                         @endforeach
-                                        {{-- @dd($minmax_value); --}}
                                         <tr>
-                                            <td class="text-center text-dark" colspan="2"><strong>Nilai Min/Max</strong></td>
-                                            <td class="text-center text-dark">{{ $minmax_value[1] }}</td>
-                                            <td class="text-center text-dark">{{ $minmax_value[2] }}</td>
-                                            <td class="text-center text-dark">{{ $minmax_value[3] }}</td>
-                                            <td class="text-center text-dark">{{ $minmax_value[4] }}</td>
-                                            <td class="text-center text-dark">{{ $minmax_value[5] }}</td>
+                                            <td class="text-center text-dark" colspan="2"><strong>Nilai Min/Max</strong>
+                                            </td>
+                                            @foreach ($minmax_value as $key => $value)
+                                                <td class="text-center text-dark">{{ $value }}</td>
+                                            @endforeach
                                         </tr>
                                     </tbody>
                                 </table>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DataAlternatifModel;
+use App\Models\AlternatifModel;
 use App\Models\KriteriaModel;
 use App\Models\SubKriteriaModel;
 use Cache;
@@ -32,40 +32,23 @@ class DashboardController extends Controller
 
     public function ShowMatriksKeputusan()
     {
-        if (!FacadesCache::has('matriks_keputusan')) {
-            $matriks_keputusan = $this->matriksKeputusan();
-        } else {
-            $matriks_keputusan = FacadesCache::get('matriks_keputusan');
-        }
+        $matriks_keputusan = $this->matriksKeputusan();
 
-        if (!FacadesCache::has('minmax_value')) {
-            $minmax_value = $this->minMaxValue($matriks_keputusan);
-        } else {
-            $minmax_value = FacadesCache::get('minmax_value');
-        }
+        $minmax_value = $this->minMaxValue($matriks_keputusan);
+
 
         return view('matriks-keputusan', [
             'matriks_keputusan' => $matriks_keputusan,
-            'minmax_value' => $minmax_value,
+            'minmax_value' => $minmax_value['minmax_value'],
         ]);
     }
 
     public function ShowNormalisasi()
     {
-        if (!FacadesCache::has('matriks_keputusan')) {
-            $matriks_keputusan = $this->matriksKeputusan();
-        } else {
-            $matriks_keputusan = FacadesCache::get('matriks_keputusan');
-        }
-
-        if (!FacadesCache::has('minmax_value') && !FacadesCache::has('kriterias')) {
-            $minmax_value = $this->minMaxValue($matriks_keputusan);
-            $minmax_value = $minmax_value['minmax_value'];
-            $kriterias = $minmax_value['kriterias'];
-        } else {
-            $minmax_value = FacadesCache::get('minmax_value');
-            $kriterias = FacadesCache::get('kriterias');
-        }
+        $matriks_keputusan = $this->matriksKeputusan();
+        $minmax = $this->minMaxValue($matriks_keputusan);
+        $minmax_value = $minmax['minmax_value'];
+        $kriterias = $minmax['kriterias'];
 
         $normalisasi = $this->normalisasi($matriks_keputusan, $kriterias, $minmax_value);
 
@@ -76,26 +59,12 @@ class DashboardController extends Controller
 
     public function ShowHasilBobotnRanking()
     {
-        if (!FacadesCache::has('matriks_keputusan')) {
-            $matriks_keputusan = $this->matriksKeputusan();
-        } else {
-            $matriks_keputusan = FacadesCache::get('matriks_keputusan');
-        }
+        $matriks_keputusan = $this->matriksKeputusan();
+        $minmax = $this->minMaxValue($matriks_keputusan);
+        $minmax_value = $minmax['minmax_value'];
+        $kriterias = $minmax['kriterias'];
 
-        if (!FacadesCache::has('minmax_value') && !FacadesCache::has('kriterias')) {
-            $minmax_value = $this->minMaxValue($matriks_keputusan);
-            $minmax_value = $minmax_value['minmax_value'];
-            $kriterias = $minmax_value['kriterias'];
-        } else {
-            $minmax_value = FacadesCache::get('minmax_value');
-            $kriterias = FacadesCache::get('kriterias');
-        }
-
-        if (!FacadesCache::has('normalisasi_scores')) {
-            $normalisasi_scores = $this->normalisasi($matriks_keputusan, $kriterias, $minmax_value);
-        } else {
-            $normalisasi_scores = FacadesCache::get('normalisasi_scores');
-        }
+        $normalisasi_scores = $this->normalisasi($matriks_keputusan, $kriterias, $minmax_value);
 
         $normalisasi_bobot = [];
         foreach ($matriks_keputusan as $nama => $bobot) {
@@ -111,10 +80,8 @@ class DashboardController extends Controller
             }
         }
 
-        // Sort the normalisasi_bobot array in descending order
         arsort($normalisasi_bobot);
 
-        // Add ranking to each name
         $ranking = 1;
         foreach ($normalisasi_bobot as $nama => $nilai) {
             $normalisasi_bobot[$nama] = [
@@ -131,20 +98,33 @@ class DashboardController extends Controller
     private function matriksKeputusan()
     {
         $sub_kriteria = SubKriteriaModel::all()->toArray();
-        $data_alternatif = DataAlternatifModel::all();
+
+        $datas = AlternatifModel::with(['dataAlternatif.kriteria'])->get();
+        $result = $datas->map(function ($alternatif) {
+            $data = [
+                'No' => $alternatif->id,
+                'Nama' => $alternatif->nama,
+                'IPK' => $this->getNilaiByKriteria($alternatif, 1),
+                'Tes Pemrograman' => $this->getNilaiByKriteria($alternatif, 2),
+                'Kemampuan Mengajar' => $this->getNilaiByKriteria($alternatif, 3),
+                'Nilai Referensi' => $this->getNilaiByKriteria($alternatif, 4),  // Nilai Referensi
+                'Kerja Sama' => $this->getNilaiByKriteria($alternatif, 5),  // Kerja Sama
+            ];
+
+            return $data;
+        })->toArray();
+
         $matriks_keputusan = [];
 
-        foreach ($data_alternatif as $alternatif) {
-            $matriks_keputusan[$alternatif->nama] = [
-                'c1' => $this->getBobot($alternatif->IPK, $sub_kriteria, 1),
-                'c2' => $this->getBobot($alternatif->tes_pemrograman, $sub_kriteria, 2),
-                'c3' => $this->getBobot($alternatif->kemampuan_mengajar, $sub_kriteria, 3),
-                'c4' => $this->getBobot($alternatif->nilai_referensi, $sub_kriteria, 4),
-                'c5' => $this->getBobot($alternatif->kerja_sama, $sub_kriteria, 5),
+        foreach ($result as $alternatif) {
+            $matriks_keputusan[$alternatif['Nama']] = [
+                'c1' => $this->getBobot($alternatif['IPK'], $sub_kriteria, 1),
+                'c2' => $this->getBobot($alternatif['Tes Pemrograman'], $sub_kriteria, 2),
+                'c3' => $this->getBobot($alternatif['Kemampuan Mengajar'], $sub_kriteria, 3),
+                'c4' => $this->getBobot($alternatif['Nilai Referensi'], $sub_kriteria, 4),
+                'c5' => $this->getBobot($alternatif['Kerja Sama'], $sub_kriteria, 5),
             ];
         }
-
-        FacadesCache::put('matriks_keputusan', $matriks_keputusan);
 
         return $matriks_keputusan;
     }
@@ -175,9 +155,6 @@ class DashboardController extends Controller
             }
         }
 
-        FacadesCache::put('kriterias', $kriterias);
-        FacadesCache::put('minmax_value', $minmax_value);
-
         return [
             'minmax_value' => $minmax_value,
             'kriterias' => $kriterias,
@@ -203,8 +180,13 @@ class DashboardController extends Controller
             }
         }
 
-        FacadesCache::put('normalisasi_scores', $normalisasi_scores);
         return $normalisasi_scores;
+    }
+
+    private function getNilaiByKriteria($alternatif, $id_kriteria)
+    {
+        $data = $alternatif->dataAlternatif->firstWhere('id_kriteria', $id_kriteria);
+        return $data ? $data->nilai : 0;
     }
 
     private function getBobot($nilai, $sub_kriteria, $kriteria_id)

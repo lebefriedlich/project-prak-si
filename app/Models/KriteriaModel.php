@@ -10,26 +10,20 @@ class KriteriaModel extends Model
     use HasFactory;
 
     protected $table = 'kriteria';
-    protected $primaryKey = 'id';
-    protected $keyType = 'int';
-    public $incrementing = true;
+
     protected $fillable = [
         'nama',
         'tipe',
-        'bobot'
-    ];
-
-    protected $guarded = [
-        'id'
-    ];
-
-    protected $hidden = [
-        'created_at',
-        'updated_at'
+        'bobot',
     ];
 
     public function subKriteria()
     {
-        return $this->hasMany(SubKriteriaModel::class, 'kriteria_id', 'id');
+        return $this->hasMany(SubKriteriaModel::class, 'kriteria_id');
+    }
+
+    public function dataAlternatif()
+    {
+        return $this->hasMany(DataAlternatifModel::class, 'id_kriteria');
     }
 }

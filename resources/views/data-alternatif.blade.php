@@ -83,33 +83,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($datas as $data)
+                                        @foreach ($result as $data)
                                             <tr>
                                                 <td class="text-center text-dark">{{ $loop->iteration }}</td>
-                                                <td class="text-center text-dark">{{ $data->nama }}</td>
-                                                <td class="text-center text-dark">{{ $data->IPK }}</td>
-                                                <td class="text-center text-dark">{{ $data->tes_pemrograman }}</td>
-                                                <td class="text-center text-dark">{{ $data->kemampuan_mengajar }}</td>
-                                                <td class="text-center text-dark">{{ $data->nilai_referensi }}</td>
-                                                <td class="text-center text-dark">{{ $data->kerja_sama }}</td>
+                                                <td class="text-center text-dark">{{ $data['Nama'] }}</td>
+                                                <td class="text-center text-dark">{{ $data['IPK'] }}</td>
+                                                <td class="text-center text-dark">{{ $data['Tes Pemrograman']}}</td>
+                                                <td class="text-center text-dark">{{ $data['Kemampuan Mengajar'] }}</td>
+                                                <td class="text-center text-dark">{{ $data['Nilai Referensi'] }}</td>
+                                                <td class="text-center text-dark">{{ $data['Kerja Sama'] }}</td>
                                                 <td class="text-center">
                                                     <button class="btn btn-success" data-toggle="modal"
                                                         style="margin-right: 20px"
-                                                        data-target="#EditModal{{ $data->id }}"><i
+                                                        data-target="#EditModal{{ $data['No'] }}"><i
                                                             class="bi bi-pencil-square"></i>
                                                         Edit</button>
                                                     <button class="btn btn-danger" data-toggle="modal"
-                                                        data-target="#HapusModal{{ $data->id }}"><i
+                                                        data-target="#HapusModal{{ $data['No'] }}"><i
                                                             class="bi bi-trash3"></i>
                                                         Hapus</button>
                                                 </td>
-                                                <div class="modal fade" id="HapusModal{{ $data->id }}" tabindex="-1"
+                                                <div class="modal fade" id="HapusModal{{ $data['No'] }}" tabindex="-1"
                                                     role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">Hapus Data
-                                                                    Bobot</h5>
+                                                                    Alternatif</h5>
                                                                 <button class="close" type="button" data-dismiss="modal"
                                                                     aria-label="Close">
                                                                     <span aria-hidden="true">×</span>
@@ -117,13 +117,13 @@
                                                             </div>
                                                             <div class="modal-body text-left text-dark">Apakah anda yakin
                                                                 menghapus
-                                                                data bobot tersebut?
+                                                                data alternatif tersebut?
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button class="btn btn-warning" type="button"
                                                                     data-dismiss="modal">Tidak</button>
                                                                 <form
-                                                                    action="{{ route('data-alternatif.destroy', $data->id) }}"
+                                                                    action="{{ route('data-alternatif.destroy', $data['No']) }}"
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -135,14 +135,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal fade" id="EditModal{{ $data->id }}" tabindex="-1"
+                                                <div class="modal fade" id="EditModal{{ $data['No'] }}" tabindex="-1"
                                                     role="dialog" aria-labelledby="exampleModalLabel"
                                                     aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">Edit Data
-                                                                    Bobot
+                                                                    Alternatif
                                                                 </h5>
                                                                 <button class="close" type="button"
                                                                     data-dismiss="modal" aria-label="Close">
@@ -150,7 +150,7 @@
                                                                 </button>
                                                             </div>
                                                             <form
-                                                                action="{{ route('data-alternatif.update', $data->id) }}"
+                                                                action="{{ route('data-alternatif.update', $data['No']) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 <div class="modal-body">
@@ -160,7 +160,7 @@
                                                                         <input type="text"
                                                                             class="form-control border border-primary"
                                                                             id="nama" name="nama" required
-                                                                            value="{{ $data->nama }}">
+                                                                            value="{{ $data['Nama'] }}">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="ipk"
@@ -168,7 +168,7 @@
                                                                         <input type="number" step="0.01"
                                                                             class="form-control" id="ipk"
                                                                             name="IPK" min="0" max="4"
-                                                                            required value="{{ $data->IPK }}" />
+                                                                            required value="{{ $data['IPK'] }}" />
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="tes_pemrograman"
@@ -177,7 +177,7 @@
                                                                             class="form-control" id="tes_pemrograman"
                                                                             name="tes_pemrograman" min="0"
                                                                             max="100" required
-                                                                            value="{{ $data->tes_pemrograman }}" />
+                                                                            value="{{ $data['Tes Pemrograman'] }}" />
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="kemampuan_mengajar"
@@ -187,7 +187,7 @@
                                                                             class="form-control" id="kemampuan_mengajar"
                                                                             name="kemampuan_mengajar" min="0"
                                                                             max="100" required
-                                                                            value="{{ $data->kemampuan_mengajar }}" />
+                                                                            value="{{ $data['Kemampuan Mengajar'] }}" />
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="nilai_referensi"
@@ -196,7 +196,7 @@
                                                                             class="form-control" id="nilai_referensi"
                                                                             name="nilai_referensi" min="0"
                                                                             max="100" required
-                                                                            value="{{ $data->nilai_referensi }}" />
+                                                                            value="{{ $data['Nilai Referensi'] }}" />
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="kerja_sama" class="text-dark">Nilai
@@ -205,7 +205,7 @@
                                                                             class="form-control" id="kerja_sama"
                                                                             name="kerja_sama" min="0"
                                                                             max="100" required
-                                                                            value="{{ $data->kerja_sama }}" />
+                                                                            value="{{ $data['Kerja Sama'] }}" />
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button class="btn btn-danger" type="button"
@@ -235,7 +235,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Kriteria</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Alternatif</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

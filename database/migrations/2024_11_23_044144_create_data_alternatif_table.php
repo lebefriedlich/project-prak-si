@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('data_alternatif', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->double(('IPK'));
-            $table->double(('tes_pemrograman'));
-            $table->double(('kemampuan_mengajar'));
-            $table->double(('nilai_referensi'));
-            $table->double(('kerja_sama'));
+            $table->foreignId('id_alternatif')->constrained('alternatif');
+            $table->foreignId('id_kriteria')->constrained('kriteria');
+            $table->double('nilai');
             $table->timestamps();
         });
     }

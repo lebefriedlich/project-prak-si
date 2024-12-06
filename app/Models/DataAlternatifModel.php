@@ -10,24 +10,20 @@ class DataAlternatifModel extends Model
     use HasFactory;
 
     protected $table = 'data_alternatif';
-    protected $primaryKey = 'id';
-    protected $keyType = 'int';
-    public $incrementing = true;
+
     protected $fillable = [
-        'nama',
-        'IPK',
-        'tes_pemrograman',
-        'kemampuan_mengajar',
-        'nilai_referensi',
-        'kerja_sama'
+        'id_alternatif',
+        'id_kriteria',
+        'nilai',
     ];
 
-    protected $guarded = [
-        'id'
-    ];
+    public function alternatif()
+    {
+        return $this->belongsTo(AlternatifModel::class, 'id_alternatif');
+    }
 
-    protected $hidden = [
-        'created_at',
-        'updated_at'
-    ];
+    public function kriteria()
+    {
+        return $this->belongsTo(KriteriaModel::class, 'id_kriteria');
+    }
 }

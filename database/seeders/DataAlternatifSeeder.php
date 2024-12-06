@@ -15,28 +15,79 @@ class DataAlternatifSeeder extends Seeder
     {
         $datas = [
             [
-                'nama' => 'Kevin Susanto',
-                'IPK' => 3.92,
-                'tes_pemrograman' => 74.5,
-                'kemampuan_mengajar' => 82,
-                'nilai_referensi' => 72,
-                'kerja_sama' => 64.5
+                'id_alternatif' => 1,
+                'id_kriteria' => 1,
+                'nilai' => 3.92
             ],
             [
-                'nama' => 'Cindy Monica',
-                'IPK' => 3.62,
-                'tes_pemrograman' => 76,
-                'kemampuan_mengajar' => 78.5,
-                'nilai_referensi' => 52,
-                'kerja_sama' => 69.5
+                'id_alternatif' => 1,
+                'id_kriteria' => 2,
+                'nilai' => 74.5
             ],
             [
-                'nama' => 'Muhammad Rafli',
-                'IPK' => 3.98,
-                'tes_pemrograman' => 74,
-                'kemampuan_mengajar' => 73.8,
-                'nilai_referensi' => 0,
-                'kerja_sama' => 84.5
+                'id_alternatif' => 1,
+                'id_kriteria' => 3,
+                'nilai' => 82
+            ],
+            [
+                'id_alternatif' => 1,
+                'id_kriteria' => 4,
+                'nilai' => 72
+            ],
+            [
+                'id_alternatif' => 1,
+                'id_kriteria' => 5,
+                'nilai' => 64.5
+            ],
+            [
+                'id_alternatif' => 2,
+                'id_kriteria' => 1,
+                'nilai' => 3.62
+            ],
+            [
+                'id_alternatif' => 2,
+                'id_kriteria' => 2,
+                'nilai' => 76
+            ],
+            [
+                'id_alternatif' => 2,
+                'id_kriteria' => 3,
+                'nilai' => 78.5
+            ],
+            [
+                'id_alternatif' => 2,
+                'id_kriteria' => 4,
+                'nilai' => 52
+            ],
+            [
+                'id_alternatif' => 2,
+                'id_kriteria' => 5,
+                'nilai' => 69.5
+            ],
+            [
+                'id_alternatif' => 3,
+                'id_kriteria' => 1,
+                'nilai' => 3.98
+            ],
+            [
+                'id_alternatif' => 3,
+                'id_kriteria' => 2,
+                'nilai' => 74
+            ],
+            [
+                'id_alternatif' => 3,
+                'id_kriteria' => 3,
+                'nilai' => 73.8
+            ],
+            [
+                'id_alternatif' => 3,
+                'id_kriteria' => 4,
+                'nilai' => 0
+            ],
+            [
+                'id_alternatif' => 3,
+                'id_kriteria' => 5,
+                'nilai' => 84.5
             ]
         ];
 
