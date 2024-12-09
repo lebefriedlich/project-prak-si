@@ -88,7 +88,7 @@
                                                 <td class="text-center text-dark">{{ $loop->iteration }}</td>
                                                 <td class="text-center text-dark">{{ $data['Nama'] }}</td>
                                                 <td class="text-center text-dark">{{ $data['IPK'] }}</td>
-                                                <td class="text-center text-dark">{{ $data['Tes Pemrograman']}}</td>
+                                                <td class="text-center text-dark">{{ $data['Tes Pemrograman'] }}</td>
                                                 <td class="text-center text-dark">{{ $data['Kemampuan Mengajar'] }}</td>
                                                 <td class="text-center text-dark">{{ $data['Nilai Referensi'] }}</td>
                                                 <td class="text-center text-dark">{{ $data['Kerja Sama'] }}</td>
@@ -207,12 +207,12 @@
                                                                             max="100" required
                                                                             value="{{ $data['Kerja Sama'] }}" />
                                                                     </div>
-                                                                    <div class="modal-footer">
-                                                                        <button class="btn btn-danger" type="button"
-                                                                            data-dismiss="modal">Batal</button>
-                                                                        <button type="submit"
-                                                                            class="btn btn-primary">Edit</button>
-                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button class="btn btn-danger" type="button"
+                                                                        data-dismiss="modal">Batal</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Edit</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -273,10 +273,10 @@
                             <input type="number" step="0.01" class="form-control" id="kerja_sama" name="kerja_sama"
                                 min="0" max="100" required />
                         </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-primary">Tambah</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
                 </form>
             </div>

@@ -39,7 +39,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        </div> 
+        </div>
     @endif
 
     @if (session('success'))
@@ -136,8 +136,8 @@
                                                                 <h5 class="modal-title" id="exampleModalLabel">Edit Data
                                                                     Bobot
                                                                 </h5>
-                                                                <button class="close" type="button" data-dismiss="modal"
-                                                                    aria-label="Close">
+                                                                <button class="close" type="button"
+                                                                    data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">×</span>
                                                                 </button>
                                                             </div>
@@ -146,30 +146,43 @@
                                                                 @csrf
                                                                 <div class="modal-body">
                                                                     <div class="form-group">
-                                                                        <label for="nama" class="text-dark">Nama Kriteria</label>
-                                                                        <input type="text" class="form-control border border-primary" id="nama"
-                                                                            name="nama" value="{{ $data->nama }}" required>
+                                                                        <label for="nama" class="text-dark">Nama
+                                                                            Kriteria</label>
+                                                                        <input type="text"
+                                                                            class="form-control border border-primary"
+                                                                            id="nama" name="nama"
+                                                                            value="{{ $data->nama }}" required>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="tipe" class="text-dark">Tipe Kriteria</label>
-                                                                        <select class="form-control border border-primary form-select form-select-lg mb-3"
+                                                                        <label for="tipe" class="text-dark">Tipe
+                                                                            Kriteria</label>
+                                                                        <select
+                                                                            class="form-control border border-primary form-select form-select-lg mb-3"
                                                                             id="tipe" name="tipe" required>
                                                                             <option value="">-</option>
-                                                                            <option value="benefit" {{ $data->tipe == 'benefit' ? 'selected' : '' }}>Benefit</option>
-                                                                            <option value="cost" {{ $data->tipe == 'cost' ? 'selected' : '' }}>Cost</option>
+                                                                            <option value="benefit"
+                                                                                {{ $data->tipe == 'benefit' ? 'selected' : '' }}>
+                                                                                Benefit</option>
+                                                                            <option value="cost"
+                                                                                {{ $data->tipe == 'cost' ? 'selected' : '' }}>
+                                                                                Cost</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="bobot" class="text-dark">Nilai Bobot Kriteria</label>
-                                                                        <input type="number" class="form-control border border-primary" id="bobot"
-                                                                            name="bobot" min="1" max="10" value="{{ $data->bobot }}" required>
+                                                                        <label for="bobot" class="text-dark">Nilai
+                                                                            Bobot Kriteria</label>
+                                                                        <input type="number"
+                                                                            class="form-control border border-primary"
+                                                                            id="bobot" name="bobot" min="1"
+                                                                            max="10" value="{{ $data->bobot }}"
+                                                                            required>
                                                                     </div>
-                                                                    <div class="modal-footer">
-                                                                        <button class="btn btn-danger" type="button"
-                                                                            data-dismiss="modal">Batal</button>
-                                                                        <button type="submit"
-                                                                            class="btn btn-primary">Edit</button>
-                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button class="btn btn-danger" type="button"
+                                                                        data-dismiss="modal">Batal</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Edit</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -219,10 +232,10 @@
                             <input type="number" class="form-control border border-primary" id="bobot"
                                 name="bobot" min="1" max="10" required>
                         </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-primary">Tambah</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
                 </form>
             </div>

@@ -159,7 +159,9 @@
                                                                                 Kriteria</label>
                                                                             <input type="text"
                                                                                 class="form-control border border-primary"
-                                                                                id="nama" value="{{ $data->kriteria->nama }}" disabled>
+                                                                                id="nama"
+                                                                                value="{{ $data->kriteria->nama }}"
+                                                                                disabled>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="nilai_min" class="text-dark">Nilai
@@ -213,13 +215,14 @@
                                                                                 </option>
                                                                             </select>
                                                                         </div>
-                                                                        <div class="modal-footer">
-                                                                            <button class="btn btn-danger" type="button"
-                                                                                data-dismiss="modal">Batal</button>
-                                                                            <button type="submit"
-                                                                                class="btn btn-primary">Edit</button>
-                                                                        </div>
                                                                     </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button class="btn btn-danger" type="button"
+                                                                        data-dismiss="modal">Batal</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Edit</button>
+                                                                </div>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -281,10 +284,10 @@
                                 <option value="Sangat Kurang">Sangat Kurang</option>
                             </select>
                         </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-primary">Tambah</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
                 </form>
             </div>
