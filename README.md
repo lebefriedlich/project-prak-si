@@ -15,7 +15,7 @@
    ```
 3. Masuk ke direktori proyek:
    ```
-   cd dss_asdos
+   cd spk_asdos_saw
    ```
 4. Install semua dependencies menggunakan Composer:
    ```
